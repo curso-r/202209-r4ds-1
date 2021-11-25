@@ -1,12 +1,12 @@
 ---
 output: github_document
 params:
+  main_repo: main-r4ds-1
   trilha_clean: programacao_para_ciencia_de_dados
-  main_repo: main-intro-programacao
-  turma: 202102-intro-programacao
-  nome_curso: ATUALIZANDO....
+  turma: 202209-r4ds-1
+  nome_curso: R para Ciência de Dados I
   num_aula: '0'
-  download_material: 'FALSE'
+  download_material: 'TRUE'
 ---
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
