@@ -33,18 +33,35 @@ Fora do horário de aula ou monitoria:
 
 ## Scripts utilizados em aula
 
+| script                                                                                                            |
+|:------------------------------------------------------------------------------------------------------------------|
+| [scripts/01-introducao-ao-R.R](https://github.com/curso-r/202209-r4ds-1/blob/master/scripts/01-introducao-ao-R.R) |
+
+## Práticas feitas em aula
+
 | script |
 |:-------|
 
-## Lição de casa
+## Tarefas para praticar em casa
 
-| exercicio |
-|:----------|
+### Tarefas sugeridas
 
-## Trabalhos finais premiados
+| Aula | Descrição                                                                                               | Respostas                                                      |
+|-----:|:--------------------------------------------------------------------------------------------------------|:---------------------------------------------------------------|
+|    1 | [Ler e fazer os exercícios — R como calculadora](https://livro.curso-r.com/3-2-r-como-calculadora.html) | [Respostas](https://livro.curso-r.com/13-1-r-b%C3%A1sico.html) |
+|    1 | [Ler e fazer os exercícios — Objetos](https://livro.curso-r.com/3-3-objetosfuncoes)                     | [Respostas](https://livro.curso-r.com/13-1-r-b%C3%A1sico.html) |
 
-| pasta_compactada |
-|:-----------------|
+### Leituras sugeridas
+
+| Aula | Descrição                                                                       |
+|-----:|:--------------------------------------------------------------------------------|
+|    1 | [Ler a seção “Pedindo ajuda”](https://livro.curso-r.com/3-1-pedindo-ajuda.html) |
+|    1 | [Ler a seção “Data frames”](https://livro.curso-r.com/3-4-data-frames.html)     |
+
+### Tarefas complementares
+
+| Aula | Descrição |
+|-----:|:----------|
 
 ## Material extra
 
@@ -52,9 +69,20 @@ Referências extras relacionadas com o conteúdos das aulas, ou materiais
 que comentamos quando tiramos dúvidas (não necessariamente são
 relacionadas com o conteúdo da aula).
 
-| Aula | Tema       | Descrição                                                                                            |
-|-----:|:-----------|:-----------------------------------------------------------------------------------------------------|
-|    0 | Instalação | [Capítulo do livro “Ciência de Dados em R”: Instalação](https://livro.curso-r.com/1-instalacao.html) |
+| Aula | Tema            | Descrição                                                                                                                                                         |
+|-----:|:----------------|:------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+|    0 | Instalação      | [Capítulo do livro “Ciência de Dados em R”: Instalação](https://livro.curso-r.com/1-instalacao.html)                                                              |
+|    1 | Comunidades     | [R-Ladies - Dashboard](https://benubah.github.io/r-community-explorer/rladies.html)                                                                               |
+|    1 | Comunidades     | [Apresentação sobre a R-Ladies São Paulo](https://r-ladies-sao-paulo.github.io/RLadiesTheme/)                                                                     |
+|    1 | Comunidades     | [AI Inclusive](https://www.ai-inclusive.org/)                                                                                                                     |
+|    1 | Comunidades     | [Grupo de telegram R Brasil](https://t.me/rbrasiloficial)                                                                                                         |
+|    1 | Curso-R         | [Blog da Curso-R](https://blog.curso-r.com/)                                                                                                                      |
+|    1 | Curso-R         | [Canal no Youtube - Lives nas quartas-feiras às 20h](https://www.youtube.com/c/CursoR6/featured)                                                                  |
+|    1 | Curso-R         | [Materiais dos cursos](https://curso-r.com/material/)                                                                                                             |
+|    1 | Curso-R         | [Material do curso Introdução à Programação com R](https://curso-r.github.io/202202-intro-programacao/)                                                           |
+|    1 | Tirando dúvidas | [Como escrever uma boa pergunta](https://discourse.curso-r.com/t/como-escrever-uma-boa-pergunta/542)                                                              |
+|    1 | Introdução      | [Folha de cola (cheatsheet): R Básico](https://rstudio.com/wp-content/uploads/2016/05/base-r.pdf)                                                                 |
+|    1 | Introdução      | [Folha de cola (cheatsheet): RStudio](https://raw.githubusercontent.com/rstudio/cheatsheets/master/translations/portuguese/rstudio-IDE-cheatsheet-portuguese.pdf) |
 
 ## Redes sociais da Curso-R
 

@@ -5,7 +5,7 @@ params:
   trilha_clean: programacao_para_ciencia_de_dados
   turma: 202209-r4ds-1
   nome_curso: R para Ciência de Dados I
-  num_aula: '0'
+  num_aula: '1'
   download_material: 'TRUE'
 ---
 
@@ -74,9 +74,31 @@ dplyr::mutate(
 
 ## Scripts utilizados em aula
 
-```{r}
-pasta <- "exemplos_de_aula/"
 
+```{r}
+pasta <- "scripts/"
+
+knitr::kable(
+  tibble::tibble(
+    script = CursoRopen:::list_github_files(params$main_repo, pasta, ".R$"),
+    link = paste0(
+      "https://github.com/curso-r/",
+      params$turma,
+      "/blob/master/",
+      script
+    )
+  ) %>%
+    dplyr::mutate(script = glue::glue("[{script}]({link})")) %>%
+    dplyr::select(script) |> 
+    dplyr::slice(1)
+)
+```
+
+
+## Práticas feitas em aula
+
+```{r}
+pasta <- "praticas/"
 
 knitr::kable(
   tibble::tibble(
@@ -94,23 +116,58 @@ knitr::kable(
 ```
 
 
-## Lição de casa
+```{r echo=FALSE, message=FALSE}
+library(magrittr, include.only = "%>%")
+googlesheets4::gs4_deauth()
+
+tarefas_raw <-
+  "https://docs.google.com/spreadsheets/d/1Ipmjvh3yJKRMU_ScQCb5z4UwQuzjBV9Z3PIF_ojvFME/edit#gid=804267470" %>%
+  googlesheets4::read_sheet("licao-de-casa-r4ds-1") 
+
+tarefas <- tarefas_raw %>%
+  dplyr::mutate(link = glue::glue("[{desc}]({url})"),
+                respostas = glue::glue("[Respostas]({url_respostas})")) %>%
+  dplyr::arrange(aula) %>%
+  dplyr::select(-url_respostas, -url, -desc) |> 
+  dplyr::filter(aula <= params$num_aula)
+
+```
+
+## Tarefas para praticar em casa
+
+### Tarefas sugeridas
 
 ```{r}
-tibble::tibble(
-  nome = CursoRopen:::list_github_files(params$main_repo, "exercicios/"),
-  link = paste0("https://curso-r.github.io/", params$main_repo, "/", nome),
-  exercicio = glue::glue("[{nome}]({link})")
-) %>%
-    dplyr::filter(!stringr::str_detect(nome, "resolucao_")) %>% 
-  dplyr::select(exercicio) %>% 
-  knitr::kable()
+tarefas |> 
+  dplyr::filter(tipo_tarefa == "tarefa") |> 
+  dplyr::select(-tipo_tarefa) |> 
+  knitr::kable(col.names = c("Aula", "Descrição", "Respostas"))
 ```
 
 
-## Trabalhos finais premiados
+### Leituras sugeridas
 
-```{r echo=FALSE}
+```{r}
+tarefas |> 
+  dplyr::filter(tipo_tarefa == "leitura") |> 
+  dplyr::select(-tipo_tarefa, -respostas) |> 
+  knitr::kable(col.names = c("Aula", "Descrição"))
+```
+
+### Tarefas complementares
+
+```{r}
+tarefas |> 
+  dplyr::filter(tipo_tarefa == "tarefa complementar") |> 
+  dplyr::select(-tipo_tarefa, -respostas) |> 
+  knitr::kable(col.names = c("Aula", "Descrição"))
+```
+
+
+
+```{r eval=FALSE, include=FALSE}
+
+## Trabalhos finais premiados
 nome_pasta <- "trabalhos_premiados"
 
 tibble::tibble(
