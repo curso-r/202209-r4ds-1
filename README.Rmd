@@ -5,7 +5,7 @@ params:
   trilha_clean: programacao_para_ciencia_de_dados
   turma: 202209-r4ds-1
   nome_curso: R para Ciência de Dados I
-  num_aula: '1'
+  num_aula: '2'
   download_material: 'TRUE'
 ---
 
