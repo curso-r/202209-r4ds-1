@@ -108,6 +108,8 @@ resultado <- 33 / 11
 # atualizar um objeto
 resultado <- resultado * 5
 
+# imdb <- 1
+
 # A nossa base imdb só será alterada quando salvarmos
 # uma operação em cima do objeto imdb
 
@@ -194,23 +196,50 @@ class(obj2)
 
 # lógicos (logical, booleanos)
 
-verdadeiro <- TRUE
-falso <- FALSE
+verdadeiro <- TRUE # VALE 1
+falso <- FALSE # VALE 0
 
 class(verdadeiro)
 class(falso)
 
-# Data frames
+TRUE + TRUE
+
+FALSE + FALSE
+
+# dúvida da Monyze: vamos ver na aula de filtros!
+TRUE == FALSE
+
+
+# Data frames - TABELAS!
+# tem linhas e colunas
+# tibble, base de dados, dados tabulares
 
 class(mtcars)
 class(imdb)
 
+imdb$data_lancamento
+class(imdb$data_lancamento)
+
+class(as.Date("2001-01-01"))
+
+# quantos filmes foram lançados a partir de 01/01/2001?
+sum(as.Date(imdb$data_lancamento) >= as.Date("2001-01-01"), na.rm = TRUE)
+
+# o filme mais recente é de 2021
+max(as.Date(imdb$data_lancamento), na.rm = TRUE)
 
 # Como acessar as colunas de uma base?
 imdb$data_lancamento
 
 # Como vemos a classe de uma coluna?
 class(imdb$data_lancamento)
+
+imdb$data_lancamento # chamei de conjunto mas o termo é VETOR
+
+# remover objetos do environment
+rm(a)
+rm(falso)
+rm(obj)
 
 # Vetores -----------------------------------------------------------------
 
@@ -234,9 +263,11 @@ vetor2
 # Vetor de -3 a 3
 -3:3
 
+1:nrow(imdb)
+
 # As colunas de data.frames são vetores
 mtcars$mpg
-imdb$titulo
+titulo_filmes <- imdb$titulo
 
 class(mtcars$mpg)
 class(imdb$titulo)
@@ -263,9 +294,19 @@ class(vetor)
 
 # character > numeric > integer > logical
 
+class(1L) # integer é numero inteiro
+class(1)
+class(1.2) # double e numeric - aceita casas demais
+
 # coerções forçadas por você
 as.numeric(c(TRUE, FALSE, FALSE))
 as.character(c(TRUE, FALSE, FALSE))
+
+class("2022-09-12")
+class(as.Date("2022-09-12"))
+as.logical("TRUE")
+
+mean(mtcars$mpg)
 
 # Por consquência, cada coluna de uma base 
 # guarda valores de apenas uma classe.
@@ -279,6 +320,7 @@ vetor - 1
 vetor / 2
 vetor * 10
 
+
 # Você também pode fazer operações que envolvem mais de um vetor:
 
 vetor1 <- c(1, 2, 3)
@@ -288,12 +330,34 @@ vetor1  + vetor2
 
 # Pacotes -----------------------------------------------------------------
 
-# Para instalar pacotes
+# colecao de: funcoes, documentação, bases de dados
+# tem algum foco
 
+# Para instalar pacotes
 install.packages("tidyverse")
+# Para usar os pacotes
 library(tidyverse)
 library(dplyr)
+# quando reiniciar o R,  os pacotes sao descarregados.
+
+
 
 # Também é possível acessar as funções usando ::
 dplyr::filter_at()
 dplyr::transmute()
+
+# olhar a base
+dplyr::glimpse(imdb)
+
+# Pergunta Julia
+# install.packages("skimr")
+skimr::skim(imdb)
+
+summary(imdb)
+
+
+# Duvida Flavia
+# mostrar como criar uma coluna multiplicando valores dre uma coluna 
+# que existe na base
+
+imdb_2 <- mutate(imdb, duracao_horas = duracao/60)
