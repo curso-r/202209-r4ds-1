@@ -42,3 +42,69 @@ destfile <- "basedadosexecucao2022_0822.xlsx"
 curl::curl_download(url, destfile)
 base <- read_excel(destfile)
 View(base)
+
+
+
+# ---------------------
+# prática 2: importacao
+
+library(readxl)
+
+# versao 1
+imdb_nao_estruturado <- read_excel("dados/imdb_nao_estruturada.xlsx")
+
+# versao 2
+# ctrl + shift + a para organizar o código
+
+imdb_nao_estruturada_2 <-
+  read_excel(
+    "dados/imdb_nao_estruturada.xlsx",
+    sheet = "Sheet2",
+    col_names = FALSE,
+    skip = 4,
+    col_types = c("skip",
+                  "text")
+  )
+
+# versão 3
+
+excel_sheets("dados/imdb_nao_estruturada.xlsx")
+
+nomes_imdb <-
+  read_excel(
+    "dados/imdb_nao_estruturada.xlsx",
+    sheet = "Sheet1"
+  )
+
+nomes_imdb$num
+nomes_imdb$nome
+
+
+
+imdb <- read_excel(
+  "dados/imdb_nao_estruturada.xlsx", 
+  col_names = nomes_imdb$nome,
+  # col_names = c("a", "b", "c", "d", "e", "f",
+  #               "g", "h", "i", "j", "k",
+  #               "l", "m", "n", "o"),
+  
+  skip = 3
+)
+
+
+
+
+
+
+
+
+
+nomes_imdb$nome # vetor 'nome' : vetor do nome das colunas
+
+imdb_nao_estruturada_3 <-
+  read_excel(
+    "dados/imdb_nao_estruturada.xlsx",
+    sheet = "Sheet2",
+    col_names = nomes_imdb$nome, # usar o vetor 'nome' como nome das colunas
+    skip = 4
+  )

@@ -1,10 +1,21 @@
 # Pacotes -----------------------------------------------------------------
 
 library(tidyverse)
+library(dplyr)
 
 # Base de dados -----------------------------------------------------------
 
 imdb <- read_rds("dados/imdb.rds")
+
+# dúvida sobre tibble!
+# read.csv retorna um data.frame simples
+imdb_df <- read.csv("dados/imdb.csv")
+imdb_df
+
+# read_csv retorna um data.frame do tipo tibble
+imdb_tibble <- read_csv("dados/imdb.csv")
+imdb_tibble
+
 
 # Jeito de ver a base -----------------------------------------------------
 
@@ -12,6 +23,10 @@ glimpse(imdb)
 names(imdb)
 View(imdb) # Cuidado com bases muito grandes!
 head(imdb)
+
+# dbl/numeric - números que aceitam casas decimais
+# integer - números que não aceitam casas decimais
+
 
 # dplyr: 6 verbos principais
 # select()    # seleciona colunas do data.frame
@@ -27,6 +42,8 @@ head(imdb)
 
 select(imdb, titulo)
 
+nome_dos_filmes <- select(imdb, titulo)
+
 # A operação NÃO MODIFICA O OBJETO imdb
 
 imdb
@@ -34,6 +51,9 @@ imdb
 # Selecionando várias colunas
 
 select(imdb, titulo, ano, orcamento)
+
+1:5 # cria sequencia
+10:100
 
 select(imdb, titulo:generos)
 
@@ -57,9 +77,21 @@ select(imdb, contains("cri"))
 
 select(imdb, -titulo)
 
+select(imdb, -c(titulo, ano, data_lancamento))
+
+select(imdb, -titulo, -ano, -data_lancamento)
+
+# podemos combinar várias regras!!
 select(imdb, -starts_with("num"), -titulo, -ends_with("ao"))
 
+# dúvida: e para linhas? 
+# veremos na aula que vem! 
+# exemplo:
+View(filter(imdb, str_starts(titulo, "Avengers")))
+
 # arrange -----------------------------------------------------------------
+
+options(scipen = 999)
 
 # Ordenando linhas de forma crescente de acordo com 
 # os valores de uma coluna
@@ -70,16 +102,64 @@ arrange(imdb, orcamento)
 
 arrange(imdb, desc(orcamento))
 
+
+View(arrange(imdb, ano, nota_imdb))
+
 # Ordenando de acordo com os valores 
 # de duas colunas
 
-arrange(imdb, desc(ano), orcamento)
+View(arrange(imdb, desc(ano), orcamento))
 
 # O que acontece com o NA? Sempre fica no final!
+# NA = VALORES FALTANTES!
+
 
 df <- tibble(x = c(NA, 2, 1), y = c(1, 2, 3))
 arrange(df, x)
 arrange(df, desc(x))
+
+
+
+
+# pegar a base
+# selecionar colunas: titulo, ano, nota
+# ordenar as colunas ano e nota: primeiro filmes mais recentes, e filmes com nota maior (decrescente)
+# filtrar filmes com mais de 10 mil avaliacoes
+
+
+# forma 1) criando objetos intermediários
+filmes_selecionados <- select(imdb, titulo, ano, nota_imdb, num_avaliacoes)
+
+filmes_ordenados <- arrange(filmes_selecionados, desc(ano), desc(nota_imdb))
+
+filmes_com_mais_avaliacoes <- filter(filmes_ordenados, num_avaliacoes > 10000)
+
+
+# formar 2) funcoes aninhadas
+
+filter(arrange(
+  select(imdb, titulo, ano, nota_imdb, num_avaliacoes),
+  desc(ano),
+  desc(nota_imdb)
+),
+num_avaliacoes > 10000)
+
+# 3) pipe - %>%  ou  |>
+# criar sequencias de código!
+
+imdb %>% 
+  select(titulo, ano, nota_imdb, num_avaliacoes) %>% 
+  arrange(desc(ano), desc(nota_imdb)) %>% 
+  filter(num_avaliacoes > 10000)
+  
+  
+# Command shift M  / 
+  
+
+
+  
+
+
 
 # Pipe (%>%) --------------------------------------------------------------
 
@@ -130,17 +210,17 @@ recipiente(rep("farinha", 2), "água", "fermento", "leite", "óleo") %>%
 
 # ATALHO DO %>%: CTRL (command) + SHIFT + M
 
-
-# pipe nativo - Atalho: CTRL SHIFT M 
+# versão 4.1
+# pipe nativo do R - Atalho: CTRL SHIFT M 
 imdb |> 
   select(titulo, ano, nota_imdb, num_avaliacoes) |> 
   arrange(desc(nota_imdb))
 
-# pipe do tidyverse - Atalho: CTRL SHIFT M 
+# pipe do tidyverse ou do Magrittr - Atalho: CTRL SHIFT M 
+# para usar ele, precisamos carregar o tidyverse, ou magrittr
 imdb %>% 
   select(titulo, ano, nota_imdb, num_avaliacoes) %>% 
   arrange(desc(nota_imdb))
-
 
 
 # filter ------------------------------------------------------------------
