@@ -5,7 +5,6 @@
 
 NA   # (Not Available) significa dado faltante/indisponível.
  
-
 NaN  # (Not a Number) representa indefinições matemáticas, como 0/0 e log(-1).
 # Um NaN é um NA, mas a recíproca não é verdadeira.
 
@@ -32,15 +31,28 @@ NA + 5
 # Use as funções is.na(), is.nan(), is.infinite() e is.null()
 # para testar se um objeto é um desses valores.
 
+
+
 x <- NA
-is.na(x)
+
+x == NA # cuidado com isso!
+
+is.na(x) # use essa função
 
 0 / 0 == NaN
 is.nan(0 / 0)
 
 
 idades <- c(15, 64, 31, NA, 59)
+
 is.na(idades)
+
+!is.na(idades)
+
+imdb %>% 
+  filter(!is.na(orcamento), !is.na(receita)) %>% 
+  View()
+
 
 is.nan(NaN)
 is.infinite(10 ^ 309)

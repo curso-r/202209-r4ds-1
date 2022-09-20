@@ -223,12 +223,48 @@ imdb %>%
   arrange(desc(nota_imdb))
 
 
+
+# RELEMBRANDO  -------------------------------------------------------------------
+# ctrl + shift + R para criar sessões
+
+imdb <- read_rds("dados/imdb.rds")
+
+# select
+
+select(imdb, titulo, nota_imdb)
+
+select(imdb, starts_with("num"))
+
+select(imdb, -c(direcao:num_criticas_critica))
+
+# arrange
+
+arrange(imdb, ano)
+
+arrange(imdb, desc(ano), desc(nota_imdb), desc(num_avaliacoes))
+
+# pipe!!
+
+# %>% - existe há anos!
+  
+# |> - de 2021!
+
+imdb %>% 
+  select(titulo)
+
+select(imdb, titulo)
+
+imdb %>% 
+  select(titulo, nota_imdb, num_avaliacoes) %>% 
+  arrange(desc(num_avaliacoes), desc(nota_imdb))
+
 # filter ------------------------------------------------------------------
 
 # filter() - filtrar linhas da base --------
 
 # R é case sensitive: 'NOME' é diferente de 'nome'
 
+# BEA bea bEa Bea beA 
 
 # olhar as categorias de uma variável:
 
@@ -239,8 +275,6 @@ imdb %>%
 
 # Retorna um vetor
 unique(imdb$direcao)
-
-
 
 # Aqui falaremos de Conceitos importantes para filtros, 
 # seguindo de exemplos!
@@ -292,16 +326,26 @@ x <= 1 # menor ou igual
 # Exemplo com filtros!
 
 ## Recentes e com nota alta
-imdb %>% filter(nota_imdb > 9, num_avaliacoes > 10000)
-imdb %>% filter(ano > 2010, nota_imdb > 8.5)
-imdb %>% filter(ano > 2010 & nota_imdb > 8.5)
+imdb %>% filter(nota_imdb > 9, num_avaliacoes > 10000) %>% View()
+
+imdb %>% filter(nota_imdb >= 9, num_avaliacoes >= 10000) %>% View()
+
+imdb %>% filter(ano > 2010, nota_imdb > 8.5) %>% View()
+
+imdb %>% filter(ano >= 2010, nota_imdb >= 8.5) %>% View()
+
 
 ## Gastaram menos de 100 mil, faturaram mais de 1 milhão
-imdb %>% filter(orcamento < 100000, receita > 1000000)
+imdb %>% filter(orcamento < 100000, receita > 1000000) %>% View()
 
 ## Lucraram
-imdb %>% filter(receita - orcamento > 0)
+imdb %>% filter(receita - orcamento > 0) %>% View()
 
+# Outra forma:
+imdb %>% 
+  mutate(teve_lucro = receita - orcamento > 0) %>% 
+  filter(teve_lucro == TRUE) %>% 
+  View()
 
 ## Comparações lógicas -------------------------------
 
@@ -315,19 +359,21 @@ imdb %>%
 
 ## Comparações lógicas -------------------------------
 
-# operador %in%
+# operador %in% ( .... faz parte de ....?)
 x %in% c(1, 2, 3)
 x %in% c(2, 3, 4)
 
 # Exemplo com filtros!
 
+imdb %>% 
+  filter(producao %in% c("Marvel Studios", "Marvel Entertainment",
+                         "Marvel Productions", "Marvel Enterprises")) %>% View()
+
 
 # O operador %in%
 
-
-
 imdb %>% 
-  filter(direcao %in% c('Matt Reeves', "Christopher Nolan"))
+  filter(direcao %in% c('Matt Reeves', "Christopher Nolan")) %>% View()
 
 
 imdb %>%
@@ -339,9 +385,11 @@ imdb %>%
       "Steven Spielberg",
       "Francis Ford Coppola"
     )
-  )
+  ) %>% View()
 
+# NÃO PODEMOS PULAR LINHA ANTES DO PIPE! apenas depois :)
 
+# atalho CTRL SHIFT A para organizar código selecionado.
 
 ## Operadores lógicos -------------------------------
 ## operadores lógicos - &, | , !
@@ -350,14 +398,15 @@ imdb %>%
 # precisam resultar em TRUE
 x <- 5
 
-x >= 3
-x <= 7
+x >= 3 # TRUE
+x <= 7 # TRUE
 
-x >= 3 & x <= 7
+x >= 3 & x <= 7 # SÓ RETORNA VERDADEIRO SE OS DOIS LADOS
+# FOREM VERDADEIROS (atender as duas condições)!
 
-x >= 3 & x <= 4
+x >= 3 & x <= 4 # veerdadeiro com falso dá falso!
 
-# no filter, a virgula funciona como o &!
+# no filter, a virgula funciona como o &
 imdb %>%  
   filter(ano > 2010, nota_imdb > 8.5) %>%
   View()
@@ -387,12 +436,15 @@ y >= 3 | y <= 0
 
 ## Lucraram mais de 500 milhões OU têm nota muito alta
 imdb %>% 
-  filter(receita - orcamento > 500000000 | nota_imdb > 9)
+  filter(receita - orcamento > 500000000 | nota_imdb > 9) %>% 
+  View()
 
 # O que esse quer dizer?
 imdb %>%
   filter(ano > 2010 | nota_imdb > 8.5) %>%
   View()
+
+
 
 ## Operadores lógicos -------------------------------
 
@@ -400,6 +452,8 @@ imdb %>%
 
 # operador de negação !
 # é o contrario
+
+!TRUE
 
 !TRUE
 
@@ -417,7 +471,7 @@ imdb %>%
   View()
 
 
-
+## PAUSA - VAMOS PARA O SCRIPT 04-VALORES-ESPECIAIS
 ##  NA ---- 
 
 # exemplo com NA
@@ -444,6 +498,8 @@ library(stringr) # faz parte do tidyverse
 
 str_detect(textos, pattern =  "a")
 
+str_detect(textos, pattern = "ab")
+
 
 ## Pegando os seis primeiros valores da coluna "generos"
 imdb$generos[1:6]
@@ -453,10 +509,15 @@ str_detect(
   pattern = "Drama"
 )
 
+str_detect(
+  string = imdb$generos[1:6],
+  pattern = "Drama|Comedy" # | - expressão regular
+)
+
 
 ## Pegando apenas os filmes que 
 ## tenham o gênero ação
-imdb %>% filter(str_detect(generos, "Action")) 
+imdb %>% filter(str_detect(generos, "Action")) %>% View()
 
 
 # filtra generos que contenha filmes que tenha "Crime" no texto
@@ -465,11 +526,19 @@ imdb %>%
   View()
 
 # filtra generos que seja IGUAL e APENAS "Crime"
-imdb %>% filter(generos == "Crime")
+imdb %>% filter(generos == "Crime") %>% View()
 
 
+# duvida do Vinicius
+
+imdb %>% 
+  distinct(generos)
 
 
+imdb %>% 
+  tidyr::separate_rows(generos, sep = ", ") %>% 
+  distinct(generos) %>% 
+  View()
 
 
 # mutate ------------------------------------------------------------------

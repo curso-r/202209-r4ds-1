@@ -33,31 +33,36 @@ Fora do horário de aula ou monitoria:
 
 ## Scripts utilizados em aula
 
-| script                                                                                                            |
-|:------------------------------------------------------------------------------------------------------------------|
-| [scripts/01-introducao-ao-R.R](https://github.com/curso-r/202209-r4ds-1/blob/master/scripts/01-introducao-ao-R.R) |
-| [scripts/02-importacao.R](https://github.com/curso-r/202209-r4ds-1/blob/master/scripts/02-importacao.R)           |
-| [scripts/03-manipulacao.R](https://github.com/curso-r/202209-r4ds-1/blob/master/scripts/03-manipulacao.R)         |
+| script                                                                                                                                        |
+|:----------------------------------------------------------------------------------------------------------------------------------------------|
+| [scripts/01-introducao-ao-R.R](https://github.com/curso-r/202209-r4ds-1/blob/master/scripts/01-introducao-ao-R.R)                             |
+| [scripts/02-importacao.R](https://github.com/curso-r/202209-r4ds-1/blob/master/scripts/02-importacao.R)                                       |
+| [scripts/03-manipulacao.R](https://github.com/curso-r/202209-r4ds-1/blob/master/scripts/03-manipulacao.R)                                     |
+| [scripts/04-valores-especiais-e-faltantes.R](https://github.com/curso-r/202209-r4ds-1/blob/master/scripts/04-valores-especiais-e-faltantes.R) |
 
 ## Práticas feitas em aula
 
-| script |
-|:-------|
+| script                                                                                    |
+|:------------------------------------------------------------------------------------------|
+| [02-importacao.R](https://github.com/curso-r/202209-r4ds-1/blob/master/02-importacao.R)   |
+| [03-manipulacao.R](https://github.com/curso-r/202209-r4ds-1/blob/master/03-manipulacao.R) |
 
 ## Tarefas para praticar em casa
 
 ### Tarefas sugeridas
 
-| Aula | Descrição                                                                                                         | Respostas                                                                |
-|-----:|:------------------------------------------------------------------------------------------------------------------|:-------------------------------------------------------------------------|
-|    1 | [Ler e fazer os exercícios — R como calculadora](https://livro.curso-r.com/3-2-r-como-calculadora.html)           | [Respostas](https://livro.curso-r.com/13-1-r-b%C3%A1sico.html)           |
-|    1 | [Ler e fazer os exercícios — Objetos](https://livro.curso-r.com/3-3-objetosFuncoes.html)                          | [Respostas](https://livro.curso-r.com/13-1-r-b%C3%A1sico.html)           |
-|    2 | [Ler e fazer os exercícios — Classes](https://livro.curso-r.com/3-5-classes.html)                                 | [Respostas](https://livro.curso-r.com/13-1-r-b%C3%A1sico.html)           |
-|    2 | [Ler e fazer os exercícios - Vetores](https://livro.curso-r.com/3-6-vetores.html)                                 | [Respostas](https://livro.curso-r.com/13-1-r-b%C3%A1sico.html#vetores-1) |
-|    2 | [Ler e fazer exercícios - Importação (seções 5.1, 5.2 e 5.3)](https://livro.curso-r.com/5-importacao.html)        | [Respostas](https://livro.curso-r.com/13-2-importa%C3%A7%C3%A3o.html)    |
-|    3 | [Ler e fazer os exercícios — Selecionando colunas](https://livro.curso-r.com/7-2-dplyr.html#selecionando-colunas) | [Respostas](https://livro.curso-r.com/13-4-o-pacote-dplyr.html)          |
-|    3 | [Ler e fazer os exercícios — Ordenando a base](https://livro.curso-r.com/7-2-dplyr.html#ordenando-a-base)         | [Respostas](https://livro.curso-r.com/13-4-o-pacote-dplyr.html)          |
-|    3 | [Ler e fazer os exercícios — Pipe](https://livro.curso-r.com/7-2-dplyr.html#o-pipe-em-a%C3%A7%C3%A3o)             | [Respostas](https://livro.curso-r.com/13-4-o-pacote-dplyr.html)          |
+| Aula | Descrição                                                                                                                               | Respostas                                                                |
+|-----:|:----------------------------------------------------------------------------------------------------------------------------------------|:-------------------------------------------------------------------------|
+|    1 | [Ler e fazer os exercícios — R como calculadora](https://livro.curso-r.com/3-2-r-como-calculadora.html)                                 | [Respostas](https://livro.curso-r.com/13-1-r-b%C3%A1sico.html)           |
+|    1 | [Ler e fazer os exercícios — Objetos](https://livro.curso-r.com/3-3-objetosFuncoes.html)                                                | [Respostas](https://livro.curso-r.com/13-1-r-b%C3%A1sico.html)           |
+|    2 | [Ler e fazer os exercícios — Classes](https://livro.curso-r.com/3-5-classes.html)                                                       | [Respostas](https://livro.curso-r.com/13-1-r-b%C3%A1sico.html)           |
+|    2 | [Ler e fazer os exercícios - Vetores](https://livro.curso-r.com/3-6-vetores.html)                                                       | [Respostas](https://livro.curso-r.com/13-1-r-b%C3%A1sico.html#vetores-1) |
+|    2 | [Ler e fazer exercícios - Importação (seções 5.1, 5.2 e 5.3)](https://livro.curso-r.com/5-importacao.html)                              | [Respostas](https://livro.curso-r.com/13-2-importa%C3%A7%C3%A3o.html)    |
+|    3 | [Ler e fazer os exercícios — Selecionando colunas](https://livro.curso-r.com/7-2-dplyr.html#selecionando-colunas)                       | [Respostas](https://livro.curso-r.com/13-4-o-pacote-dplyr.html)          |
+|    3 | [Ler e fazer os exercícios — Ordenando a base](https://livro.curso-r.com/7-2-dplyr.html#ordenando-a-base)                               | [Respostas](https://livro.curso-r.com/13-4-o-pacote-dplyr.html)          |
+|    3 | [Ler e fazer os exercícios — Pipe](https://livro.curso-r.com/7-2-dplyr.html#o-pipe-em-a%C3%A7%C3%A3o)                                   | [Respostas](https://livro.curso-r.com/13-4-o-pacote-dplyr.html)          |
+|    4 | [Ler e fazer os exercícios — Criando/modificando colunas](https://livro.curso-r.com/7-2-dplyr.html#modificando-e-criando-novas-colunas) | [Respostas](https://livro.curso-r.com/13-4-o-pacote-dplyr.html)          |
+|    4 | [Ler e fazer os exercícios — Filtrando linhas](https://livro.curso-r.com/7-2-dplyr.html#filtrando-linhas)                               | [Respostas](https://livro.curso-r.com/13-4-o-pacote-dplyr.html)          |
 
 ### Leituras sugeridas
 
@@ -73,6 +78,7 @@ Fora do horário de aula ou monitoria:
 |-----:|:-------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 |    2 | [\[OPCIONAL\] Para quem não fez o curso Introdução à programação com R: Exercícios de introdução ao R](https://acursor.shinyapps.io/intro-programacao_introducao/)       |
 |    2 | [\[OPCIONAL\] Para quem não fez o curso Introdução à programação com R: Exercícios de introdução aos dataframes](https://acursor.shinyapps.io/intro-programacao_tabelas) |
+|    4 | [Ler e fazer os exercícios — Testes lógicos](https://livro.curso-r.com/3-7-testes-l%C3%B3gicos.html)                                                                     |
 
 ## Material extra
 
@@ -117,6 +123,26 @@ relacionadas com o conteúdo da aula).
 |    3 | Pipe                 | [Post sobre o pipe nativo - Blog da Curso-R](https://blog.curso-r.com/posts/2021-05-06-o-novo-pipe-esta-chegando/)                                                 |
 |    3 | Referências gerais   | [Guia de estilo: Tidyverse](https://style.tidyverse.org/)                                                                                                          |
 |    3 | Sugestões            | [View Pipe Steps](https://github.com/daranzolin/ViewPipeSteps)                                                                                                     |
+|    4 | Extra - Bases        | [Post sobre o base dos dados](https://blog.curso-r.com/posts/2021-05-28-basedosdados/)                                                                             |
+|    4 | Manipulação de bases | [Fatiar a base de dados com slice](https://dplyr.tidyverse.org/reference/slice.html)                                                                               |
+|    4 | Manipulação de bases | [Vignette do dplyr - introdução](https://dplyr.tidyverse.org/articles/dplyr.html)                                                                                  |
+|    4 | Extra - Bases        | [Live base dos dados](https://www.youtube.com/watch?v=8D4jK-YCxLU&t=3787s)                                                                                         |
+|    4 | Extra - Bases        | [Twitter base dos dados](https://twitter.com/basedosdados)                                                                                                         |
+|    4 | Extra - Bases        | [Projeto base dos dados](https://staging.basedosdados.org/dataset?resource_type=bdm_table&order_by=score)                                                          |
+|    4 | Extra - Bases        | [Pacote dados - Base de dados traduzidas](https://cienciadedatos.github.io/dados/)                                                                                 |
+|    4 | Extra - Bases        | [Bases de dados no Kaggle](https://www.kaggle.com/datasets)                                                                                                        |
+|    4 | Extra - Bases        | [Bases de dados no tidytuesday](https://github.com/rfordatascience/tidytuesday#datasets)                                                                           |
+|    4 | Manipulação de bases | [Pacote dbplyr: dplyr para quem usa SQL](https://dbplyr.tidyverse.org/articles/translation-verb.html)                                                              |
+|    4 | Limpeza de bases     | [Post sobre o pacote janitor](https://blog.curso-r.com/posts/2017-07-24-janitor/)                                                                                  |
+|    4 | Trabalho Final       | [Base de dados - Google Data Search](https://datasetsearch.research.google.com/)                                                                                   |
+|    4 | Trabalho Final       | [Trabalhos finais do curso passado](https://curso-r.github.io/202203-r4ds-1/)                                                                                      |
+|    4 | Outros               | [Pacote summarytools - Sugestão da turma](https://cran.r-project.org/web/packages/summarytools/vignettes/introduction.html)                                        |
+|    4 | Trabalho Final       | [Post Pacote dados - Base de dados traduzidas](https://blog.curso-r.com/posts/2022-04-06-pacote-dados/)                                                            |
+|    4 | Trabalho Final       | [Post - Bases de dados para praticar e ensinar](https://blog.curso-r.com/posts/2022-06-11-bases-de-dados/)                                                         |
+|    4 | Trabalho Final       | [Bases de dados - Consórcio de informações sociais](http://www.nadd.prp.usp.br/cis/index.aspx)                                                                     |
+|    4 | NA                   | [NA - Imputação da média com pacote naniar](http://naniar.njtierney.com/reference/impute_mean.html)                                                                |
+|    4 | NA                   | [Tutorial sobre pacote naniar](https://allisonhorst.shinyapps.io/missingexplorer/#section-introduction)                                                            |
+|    4 | NA                   | [Pacote naniar](https://cran.r-project.org/web/packages/naniar/vignettes/getting-started-w-naniar.html)                                                            |
 
 ## Redes sociais da Curso-R
 
