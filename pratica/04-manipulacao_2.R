@@ -1,9 +1,9 @@
 options(scipen = 999)
 
-
 # carregando pacotes
 library(dplyr)
 library(readr)
+library(tidyr)
 
 # lendo a base de dados
 imdb <- read_rds("dados/imdb.rds")
@@ -92,6 +92,46 @@ imdb_2000 %>%
 
 ## Fazendo para todas as décadas ##
 
+# funcao floor
+# arredonda pra baixo
+floor(2.1)
+floor(2.9)
+
+# funcao ceiling
+ceiling(2.1)
+ceiling(2.9)
+
+# funcao round
+round(2.1)
+round(2.9)
+
+# vendo qual filme teve a nota maxima pra cada decada
+
+melhores_filmes_decada <- imdb |> 
+  tidyr::drop_na(ano) |> 
+  mutate(decada = floor(ano / 10) * 10,
+         .after = ano) |> 
+  group_by(decada) |> 
+  filter(nota_imdb == max(nota_imdb)) |> 
+  select(titulo, nota_imdb, decada) |> 
+  arrange(decada)
+
+# mostrando como funciona o ungroup
+
+# quero calcular a media geral das notas:
+
+# sem dar o ungroup isso nao funciona!
+
+melhores_filmes_decada |> 
+  summarise(nota_media = mean(nota_imdb))
+
+# usando o ungroup:
+
+melhores_filmes_decada |> 
+  ungroup() |> 
+  summarise(nota_media = mean(nota_imdb))
+
+  
 # deixar para a proxima aula
 
 # -------------------------------------------------------------------------
@@ -184,14 +224,16 @@ imdb |>
 imdb |> 
   mutate(lucro = receita - orcamento) |> 
   relocate(lucro,
-           .after = receita) |> View()
+           .after = receita) |> 
+  View()
 
 # quero trazer receita, lucro e orcamento pro inicio da base
 
 imdb |> 
   mutate(lucro = receita - orcamento) |> 
   relocate(lucro, orcamento, receita,
-           .before = everything()) |> View()
+           .before = everything()) |> 
+  View()
 
 
 # paramos aqui ------------------------------------------------------------
@@ -203,33 +245,85 @@ imdb |>
 # Objetivo: descobrir qual o peso médio dos 
 # personagens do Star Wars
 
+# install.packages("dados")
+library(dados)
 
+View(dados_starwars)
 
-# Peso por sexo
+# media do peso por sexo
+
+dados_starwars |> 
+  group_by(sexo_biologico) |> 
+  summarise(peso_medio = mean(massa, na.rm = TRUE))
 
 # mostrar como substituir o NA por outra coisa
 
+dados_starwars |> 
+  mutate(
+    sexo_biologico = if_else(is.na(sexo_biologico), 
+                             "sem informacao", 
+                             sexo_biologico)
+  ) |> 
+  group_by(sexo_biologico) |> 
+  summarise(peso_medio = mean(massa, na.rm = TRUE))
 
+# segundo jeito
+
+dados_starwars |> 
+  mutate(
+    sexo_biologico = replace_na(sexo_biologico, 
+                                "sem informacao")
+      ) |> 
+  group_by(sexo_biologico) |> 
+  summarise(peso_medio = mean(massa, na.rm = TRUE))
+
+# ouuuu podemos retirar os NA
+
+dados_starwars |> 
+  drop_na(sexo_biologico) |> 
+  group_by(sexo_biologico) |> 
+  summarise(peso_medio = mean(massa, na.rm = TRUE))
 
 # Peso por espécie
 
-
+dados_starwars |> 
+  drop_na(especie) |> 
+  group_by(especie) |> 
+  summarise(peso_medio = mean(massa, na.rm = TRUE))
 
 # Pegando as espécies mais pesadas
 
+dados_starwars |> 
+  drop_na(especie) |> 
+  group_by(especie) |> 
+  summarise(peso_medio = mean(massa, na.rm = TRUE)) |> 
+  slice_max(order_by = peso_medio, n = 10)
 
+# especies mais leves
+
+dados_starwars |> 
+  drop_na(especie) |> 
+  group_by(especie) |> 
+  summarise(peso_medio = mean(massa, na.rm = TRUE)) |> 
+  slice_min(order_by = peso_medio, n = 5)
 
 # Comparando com a altura
 
+peso_altura <- dados_starwars |> 
+  drop_na(especie) |> 
+  group_by(especie) |> 
+  summarise(peso_medio = mean(massa, na.rm = TRUE),
+            altura_media = mean(altura, na.rm = TRUE)) |> 
+  slice_max(order_by = peso_medio, n = 10) |> 
+  ungroup()
 
+# vamos fazer um grafico!
 
-# -------------------------------------------------------------------------
+library(ggplot2)
 
-
-# Objetivo: criar uma tabela sumarizando as produtoras, ordenadas por lucro.
-
-
-
+peso_altura |> 
+  ggplot() +
+  geom_point(aes(x = peso_medio, y = altura_media))
 
 
 # -------------------------------------------------------------------------
@@ -237,5 +331,4 @@ imdb |>
 # Fazer exemplo que a Julia perguntou
 
 # saber qual das duas sentenças é verdadeira
-
 
