@@ -64,6 +64,8 @@ Fora do horário de aula ou monitoria:
 |    3 | [Ler e fazer os exercícios — Pipe](https://livro.curso-r.com/7-2-dplyr.html#o-pipe-em-a%C3%A7%C3%A3o)                                   | [Respostas](https://livro.curso-r.com/13-4-o-pacote-dplyr.html)          |
 |    4 | [Ler e fazer os exercícios — Criando/modificando colunas](https://livro.curso-r.com/7-2-dplyr.html#modificando-e-criando-novas-colunas) | [Respostas](https://livro.curso-r.com/13-4-o-pacote-dplyr.html)          |
 |    4 | [Ler e fazer os exercícios — Filtrando linhas](https://livro.curso-r.com/7-2-dplyr.html#filtrando-linhas)                               | [Respostas](https://livro.curso-r.com/13-4-o-pacote-dplyr.html)          |
+|    5 | [Ler e fazer os exercícios — Sumarizando a base](https://livro.curso-r.com/7-2-dplyr.html#sumarizando-a-base)                           | [Respostas](https://livro.curso-r.com/13-4-o-pacote-dplyr.html)          |
+|    5 | [Ler e fazer os exercícios — Joins](https://livro.curso-r.com/7-2-dplyr.html#juntando-duas-bases)                                       | [Respostas](https://livro.curso-r.com/13-4-o-pacote-dplyr.html)          |
 
 ### Leituras sugeridas
 
@@ -144,6 +146,41 @@ relacionadas com o conteúdo da aula).
 |    4 | NA                   | [NA - Imputação da média com pacote naniar](http://naniar.njtierney.com/reference/impute_mean.html)                                                                |
 |    4 | NA                   | [Tutorial sobre pacote naniar](https://allisonhorst.shinyapps.io/missingexplorer/#section-introduction)                                                            |
 |    4 | NA                   | [Pacote naniar](https://cran.r-project.org/web/packages/naniar/vignettes/getting-started-w-naniar.html)                                                            |
+|    5 | Manipulação de bases | [Animações sobre dplyr + Join](https://www.garrickadenbuie.com/project/tidyexplain/)                                                                               |
+|    5 | Manipulação de bases | [Pacote abjutils - Remover acentos de textos](https://github.com/abjur/abjutils)                                                                                   |
+|    5 | Joins - Unindo bases | [imagem sobre join](https://d33wubrfki0l68.cloudfront.net/aeab386461820b029b7e7606ccff1286f623bae1/ef0d4/diagrams/join-venn.png)                                   |
+|    5 | Joins - Unindo bases | [Joins: juntando bases de dados](https://youtu.be/xnUo25VRH70)                                                                                                     |
+|    5 | Joins - Unindo bases | [Tidyexplain - Ilustrações sobre joins](https://www.garrickadenbuie.com/project/tidyexplain/)                                                                      |
+|    5 | Joins - Unindo bases | [Documentação sobre joins](https://dplyr.tidyverse.org/reference/join.html)                                                                                        |
+|    5 | Joins - Unindo bases | [Post que usa join com bases com chave desarrumada](https://beatrizmilz.com/blog/2020-07-27-criando-mapas-com-os-pacotes-tidyverse-e-geobr/)                       |
+|    5 | Boas práticas        | [Capítulo do livro “Zen do R”: .RData e .Rhistory](https://curso-r.github.io/zen-do-r/rdata-rhistory.html)                                                         |
+|    5 | Gráficos             | [Post sobre o pacote esquisse](https://blog.curso-r.com/posts/2022-03-22-esquisse/)                                                                                |
+|    5 | Relatórios           | [Capítulo do livro “Ciência de Dados em R”: Relatórios](https://livro.curso-r.com/9-relatorios.html)                                                               |
+|    5 | Relatórios           | [Cheatsheet RMarkdown](https://www.rstudio.com/wp-content/uploads/2015/03/rmarkdown-reference.pdf)                                                                 |
+|    5 | Relatórios           | [Netlify Drop](https://app.netlify.com/drop)                                                                                                                       |
+|    5 | Relatórios           | [Knitr: mudando o diretório de trabalho](https://blog.curso-r.com/posts/2017-03-25-knitr-mudando-diretorio-de-trabalho/)                                           |
+|    5 | Relatórios           | [Pacote xaringan: Addin infinite moon reader](https://github.com/yihui/xaringan)                                                                                   |
+|    5 | Relatórios           | [Pacote prettydoc](https://prettydoc.statr.me/)                                                                                                                    |
+|    5 | Relatórios           | [Instalação LaTeX](https://livro.curso-r.com/1-3-instalacao-adicionais.html#latex)                                                                                 |
+|    5 | Trabalho Final       | [Dicas para formatar tabelas](https://www.curso-r.com/blog/2020-12-03-dicas-relatorios-r4ds1_tabelas/)                                                             |
+|    5 | Trabalho Final       | [Dicas para formatar gráficos](https://www.curso-r.com/blog/2020-17-02-dicas-relatorios-r4ds1_graficos/)                                                           |
+|    5 | Trabalho Final       | [Dicas para elaborar relatórios](https://blog.curso-r.com/posts/2021-03-15-dicas-relatorios-r4ds1_relatorios/)                                                     |
+|    5 | Relatórios           | [Equações em LaTeX](https://en.wikibooks.org/wiki/LaTeX/Mathematics)                                                                                               |
+|    5 | Relatórios           | [Documentação do pacote ggplot2](https://github.com/yixuan/prettydoc/)                                                                                             |
+|    5 | Relatórios           | [Exemplos de documentos criados com RMarkdown](https://curso-r.github.io/main-visualizacao/slides/02-introducao-rmd.html#5)                                        |
+|    5 | Referências gerais   | [Livro Zen do R](https://curso-r.github.io/zen-do-r/index.html)                                                                                                    |
+|    5 | Conversa/Dúvidas     | [(Git) Livro Zen do R: Git e GitHub](https://curso-r.github.io/zen-do-r/git-github.html)                                                                           |
+|    5 | Conversa/Dúvidas     | [(Git) Material sobre Git e GitHub no RStudio](https://beatrizmilz.com/git_rstudio.html)                                                                           |
+|    5 | Conversa/Dúvidas     | [(Git) Playlist de videos sobre a Hacktoberfest – R-Ladies São Paulo](https://www.youtube.com/playlist?list=PLufjVrrUAoSdny-WECY4Gr2pn5OQGG_FN)                    |
+|    5 | Relatórios           | [Site para buscar GIFS](https://giphy.com/)                                                                                                                        |
+|    5 | Relatórios           | [Paleta de cores do Harry Potter (usado no exemplo)](https://github.com/aljrico/harrypotter)                                                                       |
+|    5 | Relatórios           | [Criando relatório R Markdown com template de Word](https://blog.curso-r.com/posts/2021-12-23-word-rmarkdown/)                                                     |
+|    5 | Relatórios           | [Site que ajuda a ver equações do LaTeX](https://app.mettzer.com/latex)                                                                                            |
+|    5 | Relatórios           | [Post sobre o pacote Prettydoc](https://blog.curso-r.com/posts/2022-02-24-prettydoc/)                                                                              |
+|    5 | Relatórios           | [Slides do curso de verão IME USP - Extra sobre RMarkdown para uso acadêmico](https://beatrizmilz.github.io/2022-curso-de-verao-ime-usp-relatorios/slides/#67)     |
+|    5 | Relatórios           | [Manual sobre LaTeX](http://each.uspnet.usp.br/sarajane/wp-content/uploads/2016/10/manual-latex-1.pdf)                                                             |
+|    5 | Dúvidas              | [Parse date - transformar textos em datas](https://readr.tidyverse.org/reference/parse_datetime.html)                                                              |
+|    5 | Dúvidas              | [Exemplo de RMarkdown com elementos para escrita científica](https://github.com/beatrizmilz/2022-Treinamento-Brasileiro-de-Ciencia-Aberta)                         |
 
 ## Redes sociais da Curso-R
 
