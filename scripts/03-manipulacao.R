@@ -541,6 +541,46 @@ imdb %>%
   View()
 
 
+## RELEMBRANDO -----
+
+library(tidyverse)
+
+imdb <- read_rds("dados/imdb.rds")
+
+# filmes com nota_imdb maior que 8, e mais de 100 críticas pelo público
+imdb %>% 
+  filter(nota_imdb > 8 & num_criticas_publico > 100)
+
+imdb %>% 
+  filter(nota_imdb > 8, num_criticas_publico > 100)
+
+
+# filmes que, dentre os idiomas, tenha portugues
+imdb %>% 
+  filter(str_detect(idioma, "Portuguese")) %>%  View()
+
+
+# filmes das seguintes produtoras:
+
+# Marvel Productions
+# Marvel Enterprises
+# Marvel Studios
+# Marvel Studios
+
+imdb %>% 
+  filter(str_starts(producao, "Marvel")) %>% View()
+
+imdb %>%
+  filter(
+    producao %in% c(
+      "Marvel Productions",
+      "Marvel Enterprises",
+      "Marvel Studios",
+      "Marvel Entertainment"
+    )
+  ) %>% View()
+
+
 # mutate ------------------------------------------------------------------
 
 # Modificando uma coluna
@@ -555,19 +595,41 @@ imdb %>%
   mutate(duracao_horas = duracao/60) %>% 
   View()
 
+
+imdb %>% 
+  mutate(duracao_horas = duracao/60, .after = duracao) %>% 
+  View()
+
+
+
 imdb %>% 
   mutate(lucro = receita - orcamento) %>% 
+  View()
+
+imdb %>% 
+  mutate(lucro = receita - orcamento, .after = receita) %>% 
   View()
 
 # A função ifelse é uma ótima ferramenta
 # para fazermos classificação binária (2 CATEGORIAS)
 
-imdb %>% mutate(
-  lucro = receita - orcamento,
-  houve_lucro = ifelse(lucro > 0, "Sim", "Não")
-) %>% 
+imdb %>%
+  mutate(lucro = receita - orcamento,
+         houve_lucro = ifelse(lucro > 0, "Sim", "Não")) %>%
   View()
 
+imdb %>%
+  mutate(lucro = receita - orcamento,
+         houve_lucro = ifelse(lucro > 0, "Sim", "Não"),
+         .after = receita) %>%
+  View()
+
+
+# se X for verdade, faça isso ->>>>
+#   se não, faça aquilo
+
+# se a nota do filme for maior que 8.5, o filme é um sucesso,
+# se não, o filme não é um sucesso
 
 
 # classificacao com mais de 2 categorias:
@@ -580,7 +642,7 @@ imdb %>%
       nota_imdb < 8 & nota_imdb >= 5 ~ "Média",
       nota_imdb < 5 ~ "Baixa",
       TRUE ~ "Não classificado"
-    )
+    ), .after = nota_imdb
   ) %>% View()
 
 # summarise ---------------------------------------------------------------
@@ -614,8 +676,13 @@ imdb %>% summarise(
   media_orcamento = mean(orcamento, na.rm = TRUE),
   media_receita = mean(receita, na.rm = TRUE),
   qtd = n(),
-  qtd_direcao = n_distinct(direcao)
+  qtd_direcao = n_distinct(direcao),
+  qtd_paises = n_distinct(pais)
 )
+
+imdb %>% 
+  distinct(direcao) %>% 
+  nrow()
 
 
 # n_distinct() é similar à:
@@ -624,16 +691,24 @@ imdb %>%
   nrow()
 
 
-# funcoes que transformam -> N valores
+# funcoes que transformam -> N valores - FUNÇÕES BOAS PARA O MUTATE!
 log(1:10)
-sqrt()
+sqrt(1:10)
 str_detect()
 
 # funcoes que sumarizam -> 1 valor - FUNÇÕES BOAS PARA SUMMARISE
+sum(1:100)
 mean(c(1, NA, 2))
 mean(c(1, NA, 2), na.rm = TRUE)
 n_distinct()
+n()
+knitr::combine_words()
 
+
+# dúvida da vitória
+imdb %>% 
+  mutate(media_nota_imdb = mean(nota_imdb)) %>% View()
+  
 
 # group_by + summarise ----------------------------------------------------
 
@@ -650,13 +725,48 @@ imdb %>%
     qtd = n(),
     qtd_direcao = n_distinct(direcao)
   ) %>%
-  arrange(desc(qtd)) 
+  arrange(desc(qtd)) %>% View()
 
 
+# contar número de linhas por grupo
+imdb %>% 
+  group_by(direcao) %>% 
+  summarise(n = n())
 
+imdb %>% 
+  count(direcao)
+
+imdb %>% 
+  count(direcao, sort = TRUE)
   
+
+imdb %>% 
+  group_by(direcao) %>% 
+  summarise(n = n())
+
+# dúvida do Theo
+# tally - passando uma coluna como argumento, ele soma os valores da coluna
+imdb %>% 
+  group_by(direcao) %>% 
+  tally(receita)
+
+imdb %>%
+  group_by(direcao) %>%  
+  summarise(soma_receita = sum(receita, na.rm = TRUE))
+
   
 # left join ---------------------------------------------------------------
+
+# empilhamento bind_rows(x, y)
+# join é outra coisa!
+
+# dúvida da Flávia - comparar data frames
+imdb_2 <- imdb %>% 
+  relocate(orcamento, receita, .before = everything())
+
+janitor::compare_df_cols(imdb, imdb_2)
+
+waldo::compare(imdb, imdb_2)
 
 # A função left join serve para juntarmos duas
 # tabelas a partir de uma chave. 
@@ -692,6 +802,8 @@ band_instruments %>%
 band_instruments %>%
   right_join(band_members)
 
+# fuzzyjoin
+
 
 # Um exemplo usando a outra base do imdb
 
@@ -699,6 +811,12 @@ imdb <- read_rds("dados/imdb.rds")
 imdb_avaliacoes <- read_rds("dados/imdb_avaliacoes.rds")
 
 imdb %>% 
-  left_join(imdb_avaliacoes, by = "id_filme") %>%
+  #left_join(imdb_avaliacoes, by = "id_filme") %>%
+  left_join(imdb_avaliacoes) %>%
   View()
 
+
+imdb %>% 
+  select(id_filme, titulo) %>% 
+  left_join(imdb_avaliacoes) %>% 
+  View()
