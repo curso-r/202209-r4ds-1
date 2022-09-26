@@ -42,11 +42,11 @@ Fora do horário de aula ou monitoria:
 
 ## Práticas feitas em aula
 
-| script                                                                                        |
-|:----------------------------------------------------------------------------------------------|
-| [02-importacao.R](https://github.com/curso-r/202209-r4ds-1/blob/master/02-importacao.R)       |
-| [03-manipulacao.R](https://github.com/curso-r/202209-r4ds-1/blob/master/03-manipulacao.R)     |
-| [04-manipulacao_2.R](https://github.com/curso-r/202209-r4ds-1/blob/master/04-manipulacao_2.R) |
+| script                                                                                              |
+|:----------------------------------------------------------------------------------------------------|
+| [02-importacao.R](https://github.com/curso-r/202209-r4ds-1/blob/main/pratica/02-importacao.R)       |
+| [03-manipulacao.R](https://github.com/curso-r/202209-r4ds-1/blob/main/pratica/03-manipulacao.R)     |
+| [04-manipulacao_2.R](https://github.com/curso-r/202209-r4ds-1/blob/main/pratica/04-manipulacao_2.R) |
 
 ## Tarefas para praticar em casa
 

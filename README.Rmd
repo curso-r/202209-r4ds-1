@@ -106,7 +106,8 @@ knitr::kable(
     link = paste0(
       "https://github.com/curso-r/",
       params$turma,
-      "/blob/master/",
+      "/blob/main/",
+      pasta,
       script
     )
   ) %>%
