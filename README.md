@@ -47,6 +47,8 @@ Fora do horário de aula ou monitoria:
 | [02-importacao.R](https://github.com/curso-r/202209-r4ds-1/blob/main/pratica/02-importacao.R)       |
 | [03-manipulacao.R](https://github.com/curso-r/202209-r4ds-1/blob/main/pratica/03-manipulacao.R)     |
 | [04-manipulacao_2.R](https://github.com/curso-r/202209-r4ds-1/blob/main/pratica/04-manipulacao_2.R) |
+| [05-rmarkdown.Rmd](https://github.com/curso-r/202209-r4ds-1/blob/main/pratica/05-rmarkdown.Rmd)     |
+| [06-quarto.qmd](https://github.com/curso-r/202209-r4ds-1/blob/main/pratica/06-quarto.qmd)           |
 
 ## Tarefas para praticar em casa
 
@@ -66,6 +68,7 @@ Fora do horário de aula ou monitoria:
 |    4 | [Ler e fazer os exercícios — Filtrando linhas](https://livro.curso-r.com/7-2-dplyr.html#filtrando-linhas)                               | [Respostas](https://livro.curso-r.com/13-4-o-pacote-dplyr.html)          |
 |    5 | [Ler e fazer os exercícios — Sumarizando a base](https://livro.curso-r.com/7-2-dplyr.html#sumarizando-a-base)                           | [Respostas](https://livro.curso-r.com/13-4-o-pacote-dplyr.html)          |
 |    5 | [Ler e fazer os exercícios — Joins](https://livro.curso-r.com/7-2-dplyr.html#juntando-duas-bases)                                       | [Respostas](https://livro.curso-r.com/13-4-o-pacote-dplyr.html)          |
+|    6 | [Ler e fazer os exercícios — ggplot2](https://livro.curso-r.com/8-1-o-pacote-ggplot2.html)                                              | [Respostas](https://livro.curso-r.com/13-8-o-pacote-ggplot2-1.html)      |
 
 ### Leituras sugeridas
 
@@ -74,6 +77,7 @@ Fora do horário de aula ou monitoria:
 |    1 | [Ler a seção “Pedindo ajuda”](https://livro.curso-r.com/3-1-pedindo-ajuda.html)                                           |
 |    1 | [Ler a seção “Data frames”](https://livro.curso-r.com/3-4-data-frames.html)                                               |
 |    2 | [Ler - Capítulo do RStudio (tópicos 2.1, 2.2 e 2.3 - telas, atalhos, projetos)](https://livro.curso-r.com/2-rstudio.html) |
+|    6 | [Ler - Capítulo sobre Relatórios](https://livro.curso-r.com/9-relatorios.html)                                            |
 
 ### Tarefas complementares
 
@@ -159,6 +163,34 @@ relacionadas com o conteúdo da aula).
 |    5 | Dúvidas              | [Comparar duas tibbles](https://bookdown.org/Maxine/r4ds/comparing-two-data-frames-tibbles.html)                                                                   |
 |    5 | Joins - Unindo bases | [Video sobre joins](https://www.youtube.com/watch?v=xnUo25VRH70&t=1s)                                                                                              |
 |    5 | Referências gerais   | [Livro R para Ciência de datos](https://es.r4ds.hadley.nz/)                                                                                                        |
+|    6 | Boas práticas        | [Capítulo do livro “Zen do R”: .RData e .Rhistory](https://curso-r.github.io/zen-do-r/rdata-rhistory.html)                                                         |
+|    6 | Gráficos             | [Post sobre o pacote esquisse](https://blog.curso-r.com/posts/2022-03-22-esquisse/)                                                                                |
+|    6 | Relatórios           | [Capítulo do livro “Ciência de Dados em R”: Relatórios](https://livro.curso-r.com/9-relatorios.html)                                                               |
+|    6 | Relatórios           | [Cheatsheet RMarkdown](https://www.rstudio.com/wp-content/uploads/2015/03/rmarkdown-reference.pdf)                                                                 |
+|    6 | Relatórios           | [Netlify Drop](https://app.netlify.com/drop)                                                                                                                       |
+|    6 | Relatórios           | [Knitr: mudando o diretório de trabalho](https://blog.curso-r.com/posts/2017-03-25-knitr-mudando-diretorio-de-trabalho/)                                           |
+|    6 | Relatórios           | [Pacote xaringan: Addin infinite moon reader](https://github.com/yihui/xaringan)                                                                                   |
+|    6 | Relatórios           | [Pacote prettydoc](https://prettydoc.statr.me/)                                                                                                                    |
+|    6 | Relatórios           | [Instalação LaTeX](https://livro.curso-r.com/1-3-instalacao-adicionais.html#latex)                                                                                 |
+|    6 | Trabalho Final       | [Dicas para formatar tabelas](https://www.curso-r.com/blog/2020-12-03-dicas-relatorios-r4ds1_tabelas/)                                                             |
+|    6 | Trabalho Final       | [Dicas para formatar gráficos](https://www.curso-r.com/blog/2020-17-02-dicas-relatorios-r4ds1_graficos/)                                                           |
+|    6 | Trabalho Final       | [Dicas para elaborar relatórios](https://blog.curso-r.com/posts/2021-03-15-dicas-relatorios-r4ds1_relatorios/)                                                     |
+|    6 | Relatórios           | [Equações em LaTeX](https://en.wikibooks.org/wiki/LaTeX/Mathematics)                                                                                               |
+|    6 | Relatórios           | [Documentação do pacote ggplot2](https://github.com/yixuan/prettydoc/)                                                                                             |
+|    6 | Relatórios           | [Exemplos de documentos criados com RMarkdown](https://curso-r.github.io/main-visualizacao/slides/02-introducao-rmd.html#5)                                        |
+|    6 | Referências gerais   | [Livro Zen do R](https://curso-r.github.io/zen-do-r/index.html)                                                                                                    |
+|    6 | Conversa/Dúvidas     | [(Git) Livro Zen do R: Git e GitHub](https://curso-r.github.io/zen-do-r/git-github.html)                                                                           |
+|    6 | Conversa/Dúvidas     | [(Git) Material sobre Git e GitHub no RStudio](https://beatrizmilz.com/git_rstudio.html)                                                                           |
+|    6 | Conversa/Dúvidas     | [(Git) Playlist de videos sobre a Hacktoberfest – R-Ladies São Paulo](https://www.youtube.com/playlist?list=PLufjVrrUAoSdny-WECY4Gr2pn5OQGG_FN)                    |
+|    6 | Relatórios           | [Site para buscar GIFS](https://giphy.com/)                                                                                                                        |
+|    6 | Relatórios           | [Paleta de cores do Harry Potter (usado no exemplo)](https://github.com/aljrico/harrypotter)                                                                       |
+|    6 | Relatórios           | [Criando relatório R Markdown com template de Word](https://blog.curso-r.com/posts/2021-12-23-word-rmarkdown/)                                                     |
+|    6 | Relatórios           | [Site que ajuda a ver equações do LaTeX](https://app.mettzer.com/latex)                                                                                            |
+|    6 | Relatórios           | [Post sobre o pacote Prettydoc](https://blog.curso-r.com/posts/2022-02-24-prettydoc/)                                                                              |
+|    6 | Relatórios           | [Slides do curso de verão IME USP - Extra sobre RMarkdown para uso acadêmico](https://beatrizmilz.github.io/2022-curso-de-verao-ime-usp-relatorios/slides/#67)     |
+|    6 | Relatórios           | [Manual sobre LaTeX](http://each.uspnet.usp.br/sarajane/wp-content/uploads/2016/10/manual-latex-1.pdf)                                                             |
+|    6 | Dúvidas              | [Parse date - transformar textos em datas](https://readr.tidyverse.org/reference/parse_datetime.html)                                                              |
+|    6 | Dúvidas              | [Exemplo de RMarkdown com elementos para escrita científica](https://github.com/beatrizmilz/2022-Treinamento-Brasileiro-de-Ciencia-Aberta)                         |
 
 ## Redes sociais da Curso-R
 

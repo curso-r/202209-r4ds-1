@@ -5,7 +5,7 @@ params:
   trilha_clean: programacao_para_ciencia_de_dados
   turma: 202209-r4ds-1
   nome_curso: R para Ciência de Dados I
-  num_aula: '5'
+  num_aula: '6'
   download_material: 'TRUE'
 ---
 
@@ -80,7 +80,7 @@ pasta <- "scripts/"
 
 knitr::kable(
   tibble::tibble(
-    script = CursoRopen:::list_github_files(params$main_repo, pasta, ".R$"),
+    script = CursoRopen:::list_github_files(params$main_repo, pasta, ".R$|.Rmd$"),
     link = paste0(
       "https://github.com/curso-r/",
       params$turma,
@@ -102,7 +102,7 @@ pasta <- "pratica/"
 
 knitr::kable(
   tibble::tibble(
-    script = list.files( pasta, ".R$"),
+    script = list.files( pasta, ".R$|.qmd$|.Rmd$"),
     link = paste0(
       "https://github.com/curso-r/",
       params$turma,
