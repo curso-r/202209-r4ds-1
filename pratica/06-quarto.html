@@ -1,0 +1,570 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.0.36">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Beatriz, Tereza e turma">
+<meta name="dcterms.date" content="2022-09-26">
+
+<title>Aula prática de relatórios</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+span.underline{text-decoration: underline;}
+div.column{display: inline-block; vertical-align: top; width: 50%;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}
+</style>
+
+
+<script src="06-quarto_files/libs/clipboard/clipboard.min.js"></script>
+<script src="06-quarto_files/libs/quarto-html/quarto.js"></script>
+<script src="06-quarto_files/libs/quarto-html/popper.min.js"></script>
+<script src="06-quarto_files/libs/quarto-html/tippy.umd.min.js"></script>
+<script src="06-quarto_files/libs/quarto-html/anchor.min.js"></script>
+<link href="06-quarto_files/libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="06-quarto_files/libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="06-quarto_files/libs/bootstrap/bootstrap.min.js"></script>
+<link href="06-quarto_files/libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="06-quarto_files/libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+
+<script src="06-quarto_files/libs/htmlwidgets-1.5.4/htmlwidgets.js"></script>
+<link href="06-quarto_files/libs/datatables-css-0.0.0/datatables-crosstalk.css" rel="stylesheet">
+<script src="06-quarto_files/libs/datatables-binding-0.23/datatables.js"></script>
+<script src="06-quarto_files/libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<link href="06-quarto_files/libs/dt-core-1.11.3/css/jquery.dataTables.min.css" rel="stylesheet">
+<link href="06-quarto_files/libs/dt-core-1.11.3/css/jquery.dataTables.extra.css" rel="stylesheet">
+<script src="06-quarto_files/libs/dt-core-1.11.3/js/jquery.dataTables.min.js"></script>
+<link href="06-quarto_files/libs/crosstalk-1.2.0/css/crosstalk.min.css" rel="stylesheet">
+<script src="06-quarto_files/libs/crosstalk-1.2.0/js/crosstalk.min.js"></script>
+
+
+</head>
+
+<body class="fullcontent">
+
+<div id="quarto-content" class="page-columns page-rows-contents page-layout-article">
+
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Aula prática de relatórios</h1>
+<p class="subtitle lead">R para Ciência de Dados I</p>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>Beatriz, Tereza e turma </p>
+          </div>
+  </div>
+    
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">September 26, 2022</p>
+    </div>
+  </div>
+    
+  </div>
+  
+
+</header>
+
+<section id="r-markdown" class="level2">
+<h2 class="anchored" data-anchor-id="r-markdown">R Markdown</h2>
+<!-- esse é um comentário fora do campo de código-->
+<!-- CTRL SHIFT C é o atalho para comentário -->
+<!-- CTRL SHIFT K é o atalho para renderizar o arquivo -->
+<!--# CTRL ALT I é o atalho para criar campo de código  -->
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="https://quarto.org/"><img src="images/paste-434CD6F6.png" class="img-fluid figure-img" width="178"></a></p>
+</figure>
+</div>
+<p>Segundo <span class="citation" data-cites="leao2022">Leão and Santiago (<a href="#ref-leao2022" role="doc-biblioref">2022</a>)</span>,</p>
+<p>é dito que <span class="citation" data-cites="leao2022">(<a href="#ref-leao2022" role="doc-biblioref">Leão and Santiago 2022</a>)</span> ….</p>
+<ul>
+<li>Cuidado com os caminhos!</li>
+</ul>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dados)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>imdb <span class="ot">&lt;-</span> <span class="fu">read_rds</span>(<span class="st">"../dados/imdb.rds"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(imdb)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Rows: 28,490
+Columns: 20
+$ id_filme             &lt;chr&gt; "tt0023352", "tt0037946", "tt0216204", "tt0171889…
+$ titulo               &lt;chr&gt; "Prestige", "Nob Hill", "The Shade", "Viewer Disc…
+$ ano                  &lt;dbl&gt; 1931, 1945, 1999, 1998, 1987, 1945, 1949, 1956, 2…
+$ data_lancamento      &lt;chr&gt; "1932-01-22", "1945-11-15", "2000-03-01", "2012-0…
+$ generos              &lt;chr&gt; "Adventure, Drama", "Drama, Musical", "Drama", "C…
+$ duracao              &lt;dbl&gt; 71, 95, 83, 105, 133, 91, 81, 98, 50, 85, 267, 11…
+$ pais                 &lt;chr&gt; "USA", "USA", "USA", "USA", "USA", "USA", "USA", …
+$ idioma               &lt;chr&gt; "English", "English", "English", "English", "Engl…
+$ orcamento            &lt;dbl&gt; NA, NA, 400000, NA, 20000000, NA, NA, 1505000, 50…
+$ receita              &lt;dbl&gt; NA, NA, NA, NA, 67331309, NA, NA, NA, NA, NA, NA,…
+$ receita_eua          &lt;dbl&gt; NA, NA, NA, NA, 51249404, NA, NA, NA, NA, NA, NA,…
+$ nota_imdb            &lt;dbl&gt; 5.7, 6.3, 7.1, 3.4, 7.2, 7.1, 6.3, 7.0, 5.7, 3.1,…
+$ num_avaliacoes       &lt;dbl&gt; 240, 246, 102, 111, 26257, 1639, 310, 162, 115, 1…
+$ direcao              &lt;chr&gt; "Tay Garnett", "Henry Hathaway", "Raphaël Nadjari…
+$ roteiro              &lt;chr&gt; "Harry Hervey, Tay Garnett", "Wanda Tuchock, Norm…
+$ producao             &lt;chr&gt; "RKO Pathé Pictures", "Twentieth Century Fox", "F…
+$ elenco               &lt;chr&gt; "Ann Harding, Adolphe Menjou, Melvyn Douglas, Ian…
+$ descricao            &lt;chr&gt; "A woman travels to a French penal colony in Indo…
+$ num_criticas_publico &lt;dbl&gt; 12, 11, 1, 5, 142, 35, 8, 9, 4, 12, 4, 502, 6, 35…
+$ num_criticas_critica &lt;dbl&gt; 2, 2, 1, 3, 62, 10, 5, NA, 5, 7, 7, 161, 1, 18, 8…</code></pre>
+</div>
+</div>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>filmes_nota_boa <span class="ot">&lt;-</span> imdb <span class="sc">%&gt;%</span> </span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(nota_imdb <span class="sc">&gt;</span> <span class="dv">8</span>, num_avaliacoes <span class="sc">&gt;</span> <span class="dv">10000</span>)</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>top_filmes <span class="ot">&lt;-</span> filmes_nota_boa <span class="sc">%&gt;%</span> </span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(<span class="fu">desc</span>(nota_imdb)) <span class="sc">%&gt;%</span> </span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">slice</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pull</span>(titulo) <span class="sc">%&gt;%</span> </span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>  knitr<span class="sc">::</span><span class="fu">combine_words</span>(<span class="at">and =</span> <span class="st">" e "</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<section id="inline-code" class="level3">
+<h3 class="anchored" data-anchor-id="inline-code">Inline code!</h3>
+<p>A base IMDB possui 28490 filmes, sendo 130 filmes com nota maior do que 8 tendo mais do que 10 mil avaliações. Os filmes com melhor nota são The Shawshank Redemption, The Godfather, The Godfather: Part II, 12 Angry Men, Pulp Fiction, Schindler’s List, Wheels, Forrest Gump, Star Wars: Episode V - The Empire Strikes Back, e Goodfellas.</p>
+</section>
+<section id="tabelas" class="level3">
+<h3 class="anchored" data-anchor-id="tabelas">Tabelas</h3>
+<table class="table">
+<thead>
+<tr class="header">
+<th>Col1</th>
+<th>Col2</th>
+<th>Col3</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>28490</td>
+<td></td>
+<td></td>
+</tr>
+<tr class="even">
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="odd">
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>filmes_nota_boa <span class="sc">%&gt;%</span> </span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">lucro =</span> receita <span class="sc">-</span> orcamento) <span class="sc">%&gt;%</span> </span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">slice_max</span>(<span class="at">order_by =</span> lucro, <span class="at">n =</span> <span class="dv">10</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(titulo, ano, nota_imdb, lucro) <span class="sc">%&gt;%</span> </span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>  knitr<span class="sc">::</span><span class="fu">kable</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<table class="table table-sm table-striped">
+<thead>
+<tr class="header">
+<th style="text-align: left;">titulo</th>
+<th style="text-align: right;">ano</th>
+<th style="text-align: right;">nota_imdb</th>
+<th style="text-align: right;">lucro</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Avengers: Endgame</td>
+<td style="text-align: right;">2019</td>
+<td style="text-align: right;">8.4</td>
+<td style="text-align: right;">2441800564</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Avengers: Infinity War</td>
+<td style="text-align: right;">2018</td>
+<td style="text-align: right;">8.4</td>
+<td style="text-align: right;">1727359754</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Jurassic Park</td>
+<td style="text-align: right;">1993</td>
+<td style="text-align: right;">8.1</td>
+<td style="text-align: right;">970758854</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">The Lion King</td>
+<td style="text-align: right;">1994</td>
+<td style="text-align: right;">8.5</td>
+<td style="text-align: right;">923511805</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Toy Story 3</td>
+<td style="text-align: right;">2010</td>
+<td style="text-align: right;">8.3</td>
+<td style="text-align: right;">866969703</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Star Wars</td>
+<td style="text-align: right;">1977</td>
+<td style="text-align: right;">8.6</td>
+<td style="text-align: right;">764768912</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Inside Out</td>
+<td style="text-align: right;">2015</td>
+<td style="text-align: right;">8.1</td>
+<td style="text-align: right;">683071350</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">The Sixth Sense</td>
+<td style="text-align: right;">1999</td>
+<td style="text-align: right;">8.1</td>
+<td style="text-align: right;">632806292</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Coco</td>
+<td style="text-align: right;">2017</td>
+<td style="text-align: right;">8.4</td>
+<td style="text-align: right;">632083670</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Forrest Gump</td>
+<td style="text-align: right;">1994</td>
+<td style="text-align: right;">8.8</td>
+<td style="text-align: right;">623229452</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>base_tabela <span class="ot">&lt;-</span> filmes_nota_boa <span class="sc">%&gt;%</span> </span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">lucro =</span> receita <span class="sc">-</span> orcamento) <span class="sc">%&gt;%</span> </span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">slice_max</span>(<span class="at">order_by =</span> lucro, <span class="at">n =</span> <span class="dv">10</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">lucro_formatado =</span> lucro <span class="sc">/</span> <span class="dv">1000000</span>,</span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>         <span class="co"># imaginando se fosse em reais</span></span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>         <span class="at">lucro_formatado =</span> scales<span class="sc">::</span><span class="fu">dollar</span>(<span class="fu">round</span>(lucro_formatado), <span class="at">prefix =</span> <span class="st">"R$ "</span>, <span class="at">big.mark =</span> <span class="st">"."</span>, <span class="at">decimal.mark =</span> <span class="st">","</span>)</span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>         ) <span class="sc">%&gt;%</span> </span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="at">Nome =</span> titulo, <span class="at">Ano =</span> ano, <span class="st">`</span><span class="at">Nota IMDB</span><span class="st">`</span> <span class="ot">=</span> nota_imdb, <span class="st">`</span><span class="at">Lucro (em milhões de reais)</span><span class="st">`</span> <span class="ot">=</span> lucro_formatado) </span>
+<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a>  knitr<span class="sc">::</span><span class="fu">kable</span>(base_tabela)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<table class="table table-sm table-striped">
+<thead>
+<tr class="header">
+<th style="text-align: left;">Nome</th>
+<th style="text-align: right;">Ano</th>
+<th style="text-align: right;">Nota IMDB</th>
+<th style="text-align: left;">Lucro (em milhões de reais)</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Avengers: Endgame</td>
+<td style="text-align: right;">2019</td>
+<td style="text-align: right;">8.4</td>
+<td style="text-align: left;">R$ 2.442</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Avengers: Infinity War</td>
+<td style="text-align: right;">2018</td>
+<td style="text-align: right;">8.4</td>
+<td style="text-align: left;">R$ 1.727</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Jurassic Park</td>
+<td style="text-align: right;">1993</td>
+<td style="text-align: right;">8.1</td>
+<td style="text-align: left;">R$ 971</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">The Lion King</td>
+<td style="text-align: right;">1994</td>
+<td style="text-align: right;">8.5</td>
+<td style="text-align: left;">R$ 924</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Toy Story 3</td>
+<td style="text-align: right;">2010</td>
+<td style="text-align: right;">8.3</td>
+<td style="text-align: left;">R$ 867</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Star Wars</td>
+<td style="text-align: right;">1977</td>
+<td style="text-align: right;">8.6</td>
+<td style="text-align: left;">R$ 765</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Inside Out</td>
+<td style="text-align: right;">2015</td>
+<td style="text-align: right;">8.1</td>
+<td style="text-align: left;">R$ 683</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">The Sixth Sense</td>
+<td style="text-align: right;">1999</td>
+<td style="text-align: right;">8.1</td>
+<td style="text-align: left;">R$ 633</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Coco</td>
+<td style="text-align: right;">2017</td>
+<td style="text-align: right;">8.4</td>
+<td style="text-align: left;">R$ 632</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Forrest Gump</td>
+<td style="text-align: right;">1994</td>
+<td style="text-align: right;">8.8</td>
+<td style="text-align: left;">R$ 623</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>base_tabela <span class="sc">%&gt;%</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>  DT<span class="sc">::</span><span class="fu">datatable</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+
+<div id="htmlwidget-6ed720224f5b8b24e961" style="width:100%;height:auto;" class="datatables html-widget"></div>
+<script type="application/json" data-for="htmlwidget-6ed720224f5b8b24e961">{"x":{"filter":"none","vertical":false,"data":[["1","2","3","4","5","6","7","8","9","10"],["Avengers: Endgame","Avengers: Infinity War","Jurassic Park","The Lion King","Toy Story 3","Star Wars","Inside Out","The Sixth Sense","Coco","Forrest Gump"],[2019,2018,1993,1994,2010,1977,2015,1999,2017,1994],[8.4,8.4,8.1,8.5,8.3,8.6,8.1,8.1,8.4,8.8],["R$ 2.442","R$ 1.727","R$ 971","R$ 924","R$ 867","R$ 765","R$ 683","R$ 633","R$ 632","R$ 623"]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th> <\/th>\n      <th>Nome<\/th>\n      <th>Ano<\/th>\n      <th>Nota IMDB<\/th>\n      <th>Lucro (em milhões de reais)<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"columnDefs":[{"className":"dt-right","targets":[2,3]},{"orderable":false,"targets":0}],"order":[],"autoWidth":false,"orderClasses":false}},"evals":[],"jsHooks":[]}</script>
+</div>
+</div>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>peso_altura <span class="ot">&lt;-</span> dados_starwars <span class="sc">|&gt;</span> </span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">drop_na</span>(especie) <span class="sc">|&gt;</span> </span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(especie) <span class="sc">|&gt;</span> </span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">peso_medio =</span> <span class="fu">mean</span>(massa, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>            <span class="at">altura_media =</span> <span class="fu">mean</span>(altura, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)) <span class="sc">|&gt;</span> </span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">slice_max</span>(<span class="at">order_by =</span> peso_medio, <span class="at">n =</span> <span class="dv">10</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ungroup</span>()</span>
+<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a>peso_altura <span class="sc">|&gt;</span> </span>
+<span id="cb9-10"><a href="#cb9-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>() <span class="sc">+</span></span>
+<span id="cb9-11"><a href="#cb9-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="fu">aes</span>(<span class="at">x =</span> peso_medio, <span class="at">y =</span> altura_media))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="06-quarto_files/figure-html/unnamed-chunk-8-1.png" class="img-fluid figure-img" style="width:80.0%"></p>
+</figure>
+</div>
+</div>
+</div>
+<center>
+<img src="https://media.giphy.com/media/dAahkyNIQ9gJxNKiZ9/giphy.gif" class="img-fluid">
+</center>
+</section>
+</section>
+<section id="referências" class="level2 unnumbered">
+
+
+</section>
+
+<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" role="doc-bibliography"><h2 class="anchored quarto-appendix-heading">Referências</h2><div id="refs" class="references csl-bib-body hanging-indent" role="doc-bibliography">
+<div id="ref-leao2022" class="csl-entry" role="doc-biblioentry">
+Leão, Suiane Rodrigues, and Alvany Maria dos Santos Santiago. 2022. <span>“Cenário Das Barragens de Rejeito: Conhecer Para Evitar Novas Catástrofes.”</span> <em>Ambiente &amp; Sociedade</em> 25. <a href="https://doi.org/10.1590/1809-4422asoc20210066r1vu2022l2ao">https://doi.org/10.1590/1809-4422asoc20210066r1vu2022l2ao</a>.
+</div>
+</div></section></div></main>
+<!-- /main column -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    target: function(trigger) {
+      return trigger.previousElementSibling;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    setTimeout(function() {
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      let href = ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const cites = ref.parentNode.getAttribute('data-cites').split(' ');
+    tippyHover(ref, function() {
+      var popup = window.document.createElement('div');
+      cites.forEach(function(cite) {
+        var citeDiv = window.document.createElement('div');
+        citeDiv.classList.add('hanging-indent');
+        citeDiv.classList.add('csl-entry');
+        var biblioDiv = window.document.getElementById('ref-' + cite);
+        if (biblioDiv) {
+          citeDiv.innerHTML = biblioDiv.innerHTML;
+        }
+        popup.appendChild(citeDiv);
+      });
+      return popup.innerHTML;
+    });
+  }
+});
+</script>
+</div> <!-- /content -->
+
+
+
+</body></html>

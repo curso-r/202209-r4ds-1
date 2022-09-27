@@ -26,14 +26,16 @@ p <- imdb %>%
 
 # Gráfico de dispersão da receita contra o orçamento
 imdb %>% 
+  drop_na(orcamento, receita) %>% 
   ggplot() +
   geom_point(aes(x = orcamento, y = receita))
 
 # Inserindo uma reta horizontal: filmes com receita maior que 1 milhão!
 imdb %>%
+  drop_na(orcamento, receita) %>% 
   ggplot() +
   geom_point(aes(x = orcamento, y = receita)) +
-  geom_hline(yintercept = 1000000, color = "red", linetype = 2)
+  geom_hline(yintercept = 100000000, color = "red", linetype = 4)
 
 # Observe como cada elemento é uma camada do gráfico.
 # Agora colocamos a camada da linha antes da camada
@@ -55,10 +57,13 @@ imdb %>%
     lucrou = ifelse(lucro <= 0, "Não", "Sim")
   ) %>%
   ggplot() +
-  geom_point(aes(x = orcamento, y = receita, color = lucrou))
+  aes(x = orcamento, y = receita) +
+  geom_point(aes(color = lucrou)) +
+  geom_smooth(method = "lm") +
+  theme_bw()
 
 # Salvando um gráfico em um arquivo
-imdb %>%
+grafico <- imdb %>%
   drop_na(lucro)  %>%
   mutate(
     lucrou = ifelse(lucro <= 0, "Não", "Sim")
@@ -66,15 +71,13 @@ imdb %>%
   ggplot() +
   geom_point(aes(x = orcamento, y = receita, color = lucrou), alpha = 0.5)
 
-
-
-
 # se você não especificar essas parâmetros,  ele salva por default do jeito 
 # que ta na sua tela do R
-ggsave("meu_grafico.png")
+ggsave("meu_grafico.png", plot = grafico)
 
 # podemos especificar o tamanho
 ggsave("meu_grafico.png", 
+       plot = grafico,
        dpi = 300, # resolucao
        width = 7, # largura
        height = 5 # altura
@@ -105,7 +108,7 @@ imdb %>%
 # Número de filmes por ano 
 
 imdb %>% 
-  filter(!is.na(ano), ano != 2020) %>% 
+  filter(!is.na(ano), !ano %in% c(2020)) %>% 
   group_by(ano) %>% 
   summarise(num_filmes = n()) %>% 
   ggplot() +
@@ -118,6 +121,8 @@ imdb %>%
   summarise(nota_media = mean(nota_imdb, na.rm = TRUE)) %>% 
   ggplot() +
   geom_line(aes(x = ano, y = nota_media))
+
+
 
 # Colocando pontos no gráfico
 imdb %>% 
@@ -137,6 +142,16 @@ imdb %>%
   geom_line() +
   geom_point()
 
+
+imdb %>% 
+  filter(str_detect(elenco, "Robert De Niro")) %>% 
+  group_by(ano) %>% 
+  summarise(nota_media = mean(nota_imdb, na.rm = TRUE)) %>% 
+  ggplot() +
+  aes(x = ano, y = nota_media) +
+  geom_line() +
+  geom_point()
+
 # Colocando as notas no gráfico
 imdb %>% 
   filter(str_detect(elenco, "Robert De Niro")) %>% 
@@ -144,20 +159,32 @@ imdb %>%
   summarise(nota_media = mean(nota_imdb, na.rm = TRUE)) %>% 
   mutate(nota_media = round(nota_media, 1)) %>% 
   ggplot(aes(x = ano, y = nota_media)) +
-  geom_line() +
-  geom_label(aes(label = nota_media))
-
+  geom_line(color = "blue") +
+  # geom_label(aes(label = nota_media))
+  ggrepel::geom_label_repel(aes(label = nota_media))
+  
 
 # Gráfico de barras -------------------------------------------------------
 
-# Número de filmes das pessoas que dirigiram filmes na base
+# Número de filmes das pessoas que mais dirigiram filmes na base
 imdb %>% 
-  count(direcao) %>%
+  count(direcao, sort = TRUE) %>%
   slice_max(order_by = n, n = 10) %>% 
   ggplot() +
   geom_col(aes(x = direcao, y = n))
 
 # Tirando NA e pintando as barras
+
+
+imdb %>% 
+  count(direcao, sort = TRUE) %>%
+  slice_max(order_by = n, n = 10) %>% 
+  ggplot() +
+  geom_col(aes(x = direcao, y = n, fill = direcao),
+           color = "black", 
+           show.legend = FALSE)
+
+
 imdb %>% 
   count(direcao) %>%
   filter(!is.na(direcao)) %>% 
@@ -165,6 +192,17 @@ imdb %>%
   ggplot() +
   geom_col(
     aes(x = direcao, y = n, fill = direcao),
+    show.legend = FALSE
+  )
+
+
+imdb %>% 
+  count(direcao) %>%
+  filter(!is.na(direcao)) %>% 
+  slice_max(order_by = n, n = 10) %>% 
+  ggplot() +
+  geom_col(
+    aes(y = direcao, x = n, fill = direcao),
     show.legend = FALSE
   )
 
@@ -187,7 +225,7 @@ imdb %>%
   slice_max(order_by = n, n = 10) %>% 
   mutate(
     direcao = forcats::fct_reorder(direcao, n)
-  ) %>% 
+  ) %>%
   ggplot() +
   geom_col(
     aes(x = n, y = direcao, fill = direcao),
@@ -209,7 +247,28 @@ top_10_direcao %>%
     aes(x = n, y = direcao, fill = direcao),
     show.legend = FALSE
   ) +
-  geom_label(aes(x = n/2, y = direcao, label = n)) 
+  geom_label(aes(x = n/2, y = direcao, label = n)) +
+  theme_light()
+
+
+# PRÓXIMA AULA.
+# facet!
+# esquisse
+# titulo dos eixos, gráfico: labs()
+# fundo cinza: theme
+# tema: theme
+# fontes: theme
+# grade cinza claro: theme
+# annotate!  ***
+# geom_smooth(), jitter
+# patchwork
+
+
+
+
+
+
+
 
 
 # Histogramas e boxplots --------------------------------------------------

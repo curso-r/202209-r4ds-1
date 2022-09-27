@@ -1,0 +1,117 @@
+---
+title: "Aula prática de relatórios"
+author: "Beatriz, Tereza e turma"
+date: "2022-09-26"
+output:
+  html_document: default
+  word_document: default
+subtitle: R para Ciência de Dados I
+bibliography: references.bib
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, message = FALSE, dpi = 300, fig.align = "center")
+```
+
+## R Markdown
+
+<!-- esse é um comentário fora do campo de código-->
+
+<!-- CTRL SHIFT C é o atalho para comentário -->
+
+<!-- CTRL SHIFT K é o atalho para renderizar o arquivo -->
+
+<!--# CTRL ALT I é o atalho para criar campo de código  -->
+
+[![](images/paste-434CD6F6.png){width="178"}](https://quarto.org/)
+
+Segundo @leao2022,
+
+é dito que [@leao2022] ....
+
+-   Cuidado com os caminhos!
+
+```{r message=FALSE}
+library(tidyverse)
+library(dados)
+```
+
+```{r}
+imdb <- read_rds("../dados/imdb.rds")
+```
+
+```{r}
+glimpse(imdb)
+```
+
+```{r}
+filmes_nota_boa <- imdb %>% 
+  filter(nota_imdb > 8, num_avaliacoes > 10000)
+
+top_filmes <- filmes_nota_boa %>% 
+  arrange(desc(nota_imdb)) %>% 
+  slice(1:10) %>% 
+  pull(titulo) %>% 
+  knitr::combine_words(and = " e ")
+  
+```
+
+### Inline code!
+
+A base IMDB possui `r nrow(imdb)` filmes, sendo `r nrow(filmes_nota_boa)` filmes com nota maior do que 8 tendo mais do que 10 mil avaliações. Os filmes com melhor nota são `r top_filmes`.
+
+### Tabelas
+
+| Col1           | Col2 | Col3 |
+|----------------|------|------|
+| `r nrow(imdb)` |      |      |
+|                |      |      |
+|                |      |      |
+
+```{r}
+filmes_nota_boa %>% 
+  mutate(lucro = receita - orcamento) %>% 
+  slice_max(order_by = lucro, n = 10) %>% 
+  select(titulo, ano, nota_imdb, lucro) %>% 
+  knitr::kable()
+  
+
+```
+
+```{r}
+base_tabela <- filmes_nota_boa %>% 
+  mutate(lucro = receita - orcamento) %>% 
+  slice_max(order_by = lucro, n = 10) %>% 
+  mutate(lucro_formatado = lucro / 1000000,
+         # imaginando se fosse em reais
+         lucro_formatado = scales::dollar(round(lucro_formatado), prefix = "R$ ", big.mark = ".", decimal.mark = ",")
+         ) %>% 
+  select(Nome = titulo, Ano = ano, `Nota IMDB` = nota_imdb, `Lucro (em milhões de reais)` = lucro_formatado) 
+
+
+  knitr::kable(base_tabela)
+```
+
+```{r}
+base_tabela %>%
+  DT::datatable()
+```
+
+```{r out.width="80%"}
+peso_altura <- dados_starwars |> 
+  drop_na(especie) |> 
+  group_by(especie) |> 
+  summarise(peso_medio = mean(massa, na.rm = TRUE),
+            altura_media = mean(altura, na.rm = TRUE)) |> 
+  slice_max(order_by = peso_medio, n = 10) |> 
+  ungroup()
+
+peso_altura |> 
+  ggplot() +
+  geom_point(aes(x = peso_medio, y = altura_media))
+
+```
+
+<center>![](https://media.giphy.com/media/dAahkyNIQ9gJxNKiZ9/giphy.gif)</center>
+
+## Referências
