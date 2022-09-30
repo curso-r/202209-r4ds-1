@@ -257,17 +257,61 @@ top_10_direcao %>%
 # titulo dos eixos, gráfico: labs()
 # fundo cinza: theme
 # tema: theme
-# fontes: theme
-# grade cinza claro: theme
-# annotate!  ***
-# geom_smooth(), jitter
-# patchwork
+# fontes: theme() - https://curso-r.github.io/202207-visualizacao/ 
+# grade cinza claro: theme() - https://curso-r.github.io/202207-visualizacao/
+# annotate!  - https://curso-r.github.io/202207-visualizacao/
+# patchwork - https://curso-r.github.io/202207-visualizacao/
+
+# dúvida do Raphael
+
+Sys.Date()
+
+as.Date("29/09/2022")
+
+library(tidyverse)
+
+readr::parse_date("29/09/2022", format = "%d/%m/%Y") 
+
+readr::parse_date("202209", "%Y%m")
+
+
+df_aniversario <- tibble(nome = c("Beatriz", "Tereza"), aniv = c("15/02/1993", "04/09/2000"))
+
+df_aniversario %>% 
+  mutate(data = parse_date(aniv, format = "%d/%m/%Y"))
+
+?readr::parse_date
+
+# ------------------------
+
+
+esquisse::esquisser()
+
+# Addins -> Esquisse -> ggplot2 builder
+
+imdb %>%
+  filter(ano >= 2000L & ano <= 2020L) %>%
+  ggplot() +
+  aes(x = lucro, y = nota_imdb) +
+  geom_point(
+    shape = "circle small",
+    size = 1.5,
+    colour = "#EF562D"
+  ) +
+  labs(title = "Lucro dos filmes segundo as notas do IMDB") +
+  ggthemes::theme_fivethirtyeight() +
+  ylim(0, 10)
 
 
 
-
-
-
+starwars %>%
+  ggplot() +
+  aes(x = height, y = mass) +
+  geom_point(shape = "circle",
+             size = 1.5,
+             colour = "#112446") +
+  theme_minimal() +
+  facet_wrap(vars(sex))
 
 
 
@@ -289,14 +333,42 @@ imdb %>%
     color = "white"
   )
 
+
+imdb %>% 
+  ggplot() +
+  aes(x = nota_imdb) +
+  geom_histogram()
+
+
+imdb %>% 
+  ggplot() +
+  aes(x = nota_imdb) +
+  geom_histogram(binwidth = 1)
+
+imdb %>% 
+  ggplot() +
+  aes(x = nota_imdb) +
+  geom_density(color = "red")
+
+
 # Boxplot do lucro dos filmes das pessoas que dirigiram
 # mais de 15 filmes (que temos informações sobre o lucro)
 imdb %>% 
   drop_na(direcao, lucro) %>% 
   group_by(direcao) %>% 
   filter(n() >= 15) %>% 
+  ungroup() %>% 
   ggplot() +
   geom_boxplot(aes(y = direcao, x = lucro))
+
+
+imdb %>% 
+  drop_na(direcao, lucro) %>% 
+  group_by(direcao) %>% 
+  filter(n() >= 15) %>% 
+  ungroup() %>% 
+  ggplot() +
+  geom_boxplot(aes(y = direcao, x = lucro), outlier.alpha = 1)
 
 # Ordenando pela mediana
 
@@ -323,7 +395,9 @@ imdb %>%
     color = "Lucro ($)",
     title = "Gráfico de dispersão",
     subtitle = "Receita vs Orçamento",
-    caption = "Fonte: imdb.com"
+    caption = "Fonte: imdb.com", 
+    tag = "A)" ,
+    alt = "Gráfico de pontos, mostrando o orçamento pela receita, ..."
   )
 
 # Escalas
@@ -372,7 +446,7 @@ imdb %>%
     show.legend = FALSE
   ) +
   scale_fill_manual(
-    values = c("#ff4500", "#268b07", "#ff7400", "#abefaf", "#33baba")
+    values = c("#ff4500", "#268b07", "#ff7400", "#ed1a36", "#33baba")
   )
 
 # Mudando textos da legenda
@@ -381,14 +455,23 @@ imdb %>%
                                   TRUE ~ "sem_sucesso_nota_imdb")) %>%
   group_by(ano, sucesso_nota) %>% 
   summarise(num_filmes = n()) %>% 
+  ungroup() %>% 
   ggplot() +
   geom_line(aes(x = ano, y = num_filmes, color = sucesso_nota)) +
-  scale_color_discrete(labels = c("Nota menor que 7", "Nota maior ou igual à 7"))
+  scale_color_brewer(palette = "Set2", labels = c("Nota menor que 7", "Nota maior ou igual à 7")) +
+  theme_light()
 
 # Definindo cores das formas geométricas
 imdb %>% 
   ggplot() +
-  geom_point(mapping = aes(x = orcamento, y = receita), color = "#ff7400")
+  geom_point(mapping = aes(x = orcamento, y = receita), color = "#0363C3")
+
+imdb %>% 
+  ggplot() +
+  geom_point(mapping = aes(x = orcamento, y = receita, color = receita)) +
+  scale_color_distiller(palette = "Oranges", direction = -1)
+
+
 
 # Tema --------------------------------------------------------------------
 
@@ -397,19 +480,24 @@ imdb %>%
   ggplot() +
   geom_point(mapping = aes(x = orcamento, y = receita)) +
   # theme_bw() 
-  # theme_classic() 
+  #theme_classic() 
   # theme_dark()
   theme_minimal()
 
+
+
 # A função theme()
-imdb %>% 
+imdb %>%
   ggplot() +
   geom_point(mapping = aes(x = orcamento, y = receita)) +
-  labs(
-    title = "Gráfico de dispersão",
-    subtitle = "Receita vs Orçamento"
-  ) +
+  labs(title = "Gráfico de dispersão",
+       subtitle = "Receita vs Orçamento") +
   theme(
+    text = element_text(
+      family = "Times New Roman",
+      size = 14,
+      colour = "red"
+    ),
     plot.title = element_text(hjust = 0.5),
     plot.subtitle = element_text(hjust = 0.5)
   )
